@@ -13,7 +13,7 @@
 		<clobbers target="cordova.FacebookConnect" />
 	</js-module>
 
-    <js-module name="FacebookConnect" src="www/facebook-js-sdk.js">
+    <js-module name="FacebookSDK" src="www/facebook-js-sdk.js">
         <clobbers target="FB" />
     </js-module>
 
