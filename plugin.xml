@@ -13,7 +13,7 @@
 		<clobbers target="cordova.FacebookConnect" />
 	</js-module>
 
-    <js-module name="FacebookConnect" src="www/facebook-js-sdk.js">
+    <js-module name="FacebookSDK" src="www/facebook-js-sdk.js">
         <clobbers target="FB" />
     </js-module>
 
@@ -52,6 +52,7 @@
         <!-- Cordova >= 2.3 -->
         <config-file target="config.xml" parent="/*">
             <feature name="FacebookConnect">
+                <param name="ios-package" value="FacebookConnectPlugin" />
             </feature>
             <!-- <plugin name="org.apache.cordova.facebook.Connect" value="FacebookConnectPlugin"/> -->
         </config-file>
