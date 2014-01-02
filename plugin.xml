@@ -56,6 +56,9 @@
             </feature>
             <!-- <plugin name="org.apache.cordova.facebook.Connect" value="FacebookConnectPlugin"/> -->
         </config-file>
+
+        <parameter name="APP_ID" />
+        <parameter name="APP_NAME" />
         
         <header-file src="src/ios/FacebookConnectPlugin.h" />
         <source-file src="src/ios/FacebookConnectPlugin.m" />
