@@ -6,8 +6,8 @@
 	 <license>Apache 2.0</license>
     <keywords>cordova,facebook,connect</keywords>
 
-    <asset src="www/facebook_connect.js" target="facebook_connect.js" />
-    <asset src="www/facebook-js-sdk.js" target="facebook-js-sdk.js" />
+    <!-- <asset src="www/facebook_connect.js" target="facebook_connect.js" />
+    <asset src="www/facebook-js-sdk.js" target="facebook-js-sdk.js" /> -->
 
 	<js-module name="FacebookConnect" src="www/facebook_connect.js">
 		<clobbers target="cordova.FacebookConnect" />
@@ -15,6 +15,10 @@
 
     <js-module name="FacebookSDK" src="www/facebook-js-sdk.js">
         <clobbers target="FB" />
+    </js-module>
+
+    <js-module name="SDK" src="www/facebook_sdk.js">
+        <clobbers target="FBSDK" />
     </js-module>
 
 	<!-- android -->
