@@ -17,9 +17,9 @@
         <clobbers target="FB" />
     </js-module>
 
-    <js-module name="SDK" src="www/facebook_sdk.js">
+    <!-- <js-module name="SDK" src="www/facebook_sdk.js">
         <clobbers target="FBSDK" />
-    </js-module>
+    </js-module> -->
 
 	<!-- android -->
     <platform name="android">
