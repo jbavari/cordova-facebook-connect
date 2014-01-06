@@ -9,13 +9,13 @@
     <!-- <asset src="www/facebook_connect.js" target="facebook_connect.js" />
     <asset src="www/facebook-js-sdk.js" target="facebook-js-sdk.js" /> -->
 
-    <!-- <js-module name="FacebookSDK" src="www/facebook-js-sdk.js">
-        <clobbers target="FB" />
-    </js-module> -->
-
-    <js-module name="SDK" src="www/facebook_sdk.js">
+    <js-module name="FacebookSDK" src="www/facebook-js-sdk.js">
         <clobbers target="FB" />
     </js-module>
+
+    <!-- <js-module name="SDK" src="www/facebook_sdk.js">
+        <clobbers target="FB" />
+    </js-module> -->
 
     <js-module name="FacebookConnect" src="www/facebook_connect.js">
         <clobbers target="cordova.FacebookConnect" />
