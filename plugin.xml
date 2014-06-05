@@ -8,6 +8,7 @@
 
     <!-- <asset src="www/facebook_connect.js" target="facebook_connect.js" />
     <asset src="www/facebook-js-sdk.js" target="facebook-js-sdk.js" /> -->
+    <asset src="www/angular/facebookConnect.js" target="facebookConnect.js" />
 
     <js-module name="FacebookConnect" src="www/facebook_connect.js">
         <clobbers target="FacebookConnect" />
