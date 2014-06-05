@@ -9,7 +9,11 @@
     <!-- <asset src="www/facebook_connect.js" target="facebook_connect.js" />
     <asset src="www/facebook-js-sdk.js" target="facebook-js-sdk.js" /> -->
 
-    <js-module name="FacebookSDK" src="www/facebook-js-sdk.js">
+    <js-module name="FacebookConnect" src="www/facebook_connect.js">
+        <clobbers target="FacebookConnect" />
+    </js-module>
+
+    <js-module name="FacebookSDK" src="www/facebook_sdk.js">
         <clobbers target="FB" />
     </js-module>
 
@@ -17,36 +21,63 @@
         <clobbers target="FB" />
     </js-module> -->
 
-    <js-module name="FacebookConnect" src="www/facebook_connect.js">
-        <clobbers target="cordova.FacebookConnect" />
-    </js-module>
-
 	<!-- android -->
     <platform name="android">
 
-        <config-file target="res/xml/config.xml" parent="plugins">
-            <plugin name="org.apache.cordova.facebook.Connect" value="org.apache.cordova.facebook.ConnectPlugin"/>
+        <preference name="APP_ID" />
+        <preference name="APP_NAME" />
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="FacebookConnect">
+                <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
+            </feature>
+            <access origin="https://m.facebook.com" />
+            <access origin="https://graph.facebook.com" />
+            <access origin="https://api.facebook.com" />
+            <access origin="https://*.fbcdn.net" />
+            <access origin="https://*.akamaihd.net" />
         </config-file>
         
+        <!-- <source-file src="src/android/facebook/res/values/facebookconnect.xml" target-dir="res/values" /> -->
+        <config-file target="res/values/strings.xml" parent="/*">
+            <string name="fb_app_id">$APP_ID</string>
+            <string name="fb_app_name">$APP_NAME</string>
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="application">
+            <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/fb_app_id"/>
+            <activity android:label="@string/fb_app_name" android:name="com.facebook.LoginActivity"></activity>
+        </config-file>
+
+        <!-- <config-file target="res/xml/config.xml" parent="plugins">
+            <plugin name="org.apache.cordova.facebook.Connect" value="org.apache.cordova.facebook.ConnectPlugin"/>
+        </config-file> -->
+        
         <!-- res files -->
-        <source-file src="src/android/facebook/res/drawable/close.png" target-dir="res/drawable" />
+        <!-- <source-file src="src/android/facebook/res/drawable/close.png" target-dir="res/drawable" />
         <source-file src="src/android/facebook/res/drawable/facebook_icon.png" target-dir="res/drawable" />
         <source-file src="src/android/facebook/res/drawable-hdpi/close.png" target-dir="res/drawable-hdpi" />
         <source-file src="src/android/facebook/res/drawable-hdpi/facebook_icon.png" target-dir="res/drawable-hdpi" />
         <source-file src="src/android/facebook/res/drawable-ldpi/close.png" target-dir="res/drawable-ldpi" />
         <source-file src="src/android/facebook/res/drawable-ldpi/facebook_icon.png" target-dir="res/drawable-ldpi" />
-        <source-file src="src/android/facebook/res/drawable-xhdpi/close.png" target-dir="res/drawable-xhdpi" />
+        <source-file src="src/android/facebook/res/drawable-xhdpi/close.png" target-dir="res/drawable-xhdpi" /> -->
         
         <!-- cordova plugin src files -->
-        <source-file src="src/android/ConnectPlugin.java" target-dir="src/org/apache/cordova/facebook" />
+        <!-- <source-file src="src/android/ConnectPlugin.java" target-dir="src/org/apache/cordova/facebook" /> -->
         
         <!-- facebook src files -->
-        <source-file src="src/android/facebook/AsyncFacebookRunner.java" target-dir="src/com/facebook/android" />
+        <!-- <source-file src="src/android/facebook/AsyncFacebookRunner.java" target-dir="src/com/facebook/android" />
         <source-file src="src/android/facebook/DialogError.java" target-dir="src/com/facebook/android" />
         <source-file src="src/android/facebook/Facebook.java" target-dir="src/com/facebook/android" />
         <source-file src="src/android/facebook/FacebookError.java" target-dir="src/com/facebook/android" />
         <source-file src="src/android/facebook/FbDialog.java" target-dir="src/com/facebook/android" />
-        <source-file src="src/android/facebook/Util.java" target-dir="src/com/facebook/android" />
+        <source-file src="src/android/facebook/Util.java" target-dir="src/com/facebook/android" /> -->
+
+        <!-- copy Facebook Lib project -->
+        <source-file src="src/android/facebook/FacebookLib" target-dir="./" />
+
+        <!-- cordova plugin src files -->
+        <source-file src="src/android/ConnectPlugin.java" target-dir="src/org/apache/cordova/facebook" />
          
     </platform>
     

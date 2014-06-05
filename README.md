@@ -2,24 +2,31 @@ This plugin allows Cordova 3.x users the ability to use the old PhoneGap Faceboo
 
 You must first have a facebook application set up, do that here: http://developers.facebook.com/
 
-Begin by installing the plugin with the Cordova CLI:
+## Getting Started
 
-cordova plugin add https://github.com/jbavari/cordova-facebook-connect.git --variable APP_ID="APP_ID" --variable APP_NAME="APP_NAME" 
+Begin by installing the plugin with the Cordova CLI with your Facebook App ID:
 
-Or Using Plugman (still in development):
+`cordova plugin add https://github.com/jbavari/cordova-facebook-connect.git --variable APP_ID="APP_ID" --variable APP_NAME="APP_NAME"`
 
-plugman install --project ./platforms/ios/ --platform ios --plugin https://github.com/jbavari/cordova-facebook-connect.git --variable APP_ID="APP_ID" --variable APP_NAME="APP_NAME" 
+## VERY IMPORTANT
+
+You'll need to update your project configuration.
+
+Run this command from your platforms/android folder:
+
+android update lib-project --target 9 --path FacebookLib/
+
+More information about that command [here](http://developer.android.com/tools/projects/projects-cmdline.html).
 
 
+## Plugin Usage
+
+FacebookConnect.init({appId: 'some_fb_id'});
 
 
-Using the Plugin
-================
-
-To begin using the Plugin, you must use FB.init as such:
-
-``` javascript
-FB.init({ appId: 'APP_ID', nativeInterface: cordova.FacebookConnect, useCachedDialogs: false, status: false, oauth: true });
-```
-
-Once that is complete, you may use the Facebook Javascript SDK as you normally would as specified in [Facebook SDK Methods](https://developers.facebook.com/docs/reference/javascript#core-methods)
+var perms = {scope: 'email, publish_stream, read_stream, photo_upload, xmpp_login'};
+FacebookConnect.login(perms, function(response){
+  //Handle response here.
+}, function(error) { 
+  //Handle error here.
+});
