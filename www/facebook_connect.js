@@ -7,14 +7,14 @@ var FacebookConnect = function() {
 
 //Figure out if we are in cordova or not.
 
-FacebookConnect.prototype.init = function(appId) {
+FacebookConnect.prototype.init = function(appId, failureCallback) {
   FB.init({ appId: appId, status: true, xfbml: true, version: 'v2.0'});
 
   //If hybrid app (native bridge)
   if(cordova) {
     exec(function() {
       console.log("We init'd the FB sdk");
-    }, (fail ? fail : null), 'FacebookConnect', 'init', [appId]);
+    }, (failureCallback ? failureCallback : null), 'FacebookConnect', 'init', [appId]);
   }
 }
 
