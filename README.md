@@ -30,3 +30,44 @@ FacebookConnect.login(perms, function(response){
 }, function(error) { 
   //Handle error here.
 });
+
+## AngularJS Service
+
+I've also included an AngularJS wrapper for the Cordova Facebook Plugin. When you install the plugin, it will place a facebookConnect.js file in the root level of your platforms www folder (platforms/ios/www or platforms/android/asset/www). You can include it optionally to use the AngularJS service `$cordovaFacebook`.
+
+First include it in your index.html using the following:
+
+```
+<script src="facebookConnect.js"></script>
+```
+
+Then use it in your controllers (after including for your module) like so:
+
+```
+angular.module('starter.controllers', ['ngCordova.plugins.facebookConnect'])
+.controller('DashCtrl', function($scope, $cordovaFacebook) {
+
+    $scope.login = function() {
+    	$cordovaFacebook.init({ appId: "441248765970485", status: true, xfbml: true, version: 'v2.0'}).then(function(data) {
+	    	alert('fb init: ' + data);
+	    }, function(error) {
+	    	alert('fb fail: ' + error);
+	    });
+
+	    $cordovaFacebook.login({scope: 'email, publish_stream, read_stream, photo_upload, xmpp_login'}).then(function(response){
+	    	alert('login: ' + response);
+	    }, function(error) {
+	    	alert('login error: ' + error);
+	    });
+    }
+
+    $scope.status = function status() {
+    	$cordovaFacebook.getLoginStatus().then(function(status) {
+    		alert(status);
+    	});
+    }
+
+})
+```
+
+Enjoy!
